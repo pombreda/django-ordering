@@ -1,0 +1,30 @@
+- fields:
+    date_joined: 2011-06-08 15:09:27.362826
+    email: test_super@nowhere.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: true
+    is_superuser: true
+    last_login: 2011-06-08 15:09:27.362826
+    last_name: ''
+    password: sha1$5c899$9ea240721ba9770fcc2b948d663c4363363c34c4
+    user_permissions: []
+    username: test_super
+  model: auth.user
+  pk: 1
+- fields:
+    date_joined: 2011-06-08 15:09:27.362826
+    email: test_user@nowhere.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: false
+    is_superuser: false
+    last_login: 2011-06-08 15:09:27.362826
+    last_name: ''
+    password: sha1$5c899$9ea240721ba9770fcc2b948d663c4363363c34c4
+    user_permissions: []
+    username: test_user
+  model: auth.user
+  pk: 2

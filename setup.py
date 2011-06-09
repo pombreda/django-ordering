@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1a1'
+version = '0.1a2'
 
 setup(
     name='django-ordering',
@@ -26,13 +26,14 @@ setup(
     author_email='scheper@unc.edu',
     url='https://github.com/wfscheper/django-ordering',
     license='',
-    packages=find_packages('src', exclude=['ez_setup']),
+    packages=find_packages('src', exclude=['ez_setup', 'ordering.tests']),
     package_dir={'': 'src'},
     namespace_packages=[],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
         'setuptools',
-        # -*- Extra requirements: -*-
+        'django>=1.3,<1.4',
+        'south>=0.7,<0.8',
     ],
 )

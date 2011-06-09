@@ -3,6 +3,18 @@ Created on Jun 3, 2011
 
 @author: scheper
 '''
+from django.conf.global_settings import FIXTURE_DIRS
+
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+ADMINS = (
+    # ('Your Name', 'your_email@example.com'),
+)
+
+MANAGERS = ADMINS
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -14,12 +26,13 @@ DATABASES = {
     }
 }
 
+ROOT_URLCONF = 'ordering.urls'
+
 INSTALLED_APPS = (
-    # Put any other apps that your app depends on here
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django_extensions',
+    'debug_toolbar',
+    'south',
     'ordering',
 )
-SITE_ID = 1
-
-# This merely needs to be present - as long as your test case specifies a
-# urls attribute, it does not need to be populated.
-ROOT_URLCONF = ''

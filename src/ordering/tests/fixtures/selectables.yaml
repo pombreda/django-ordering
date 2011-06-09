@@ -1,0 +1,18 @@
+- model: ordering.selectable
+  pk: 1
+  fields:
+      created: !!timestamp '2011-06-01 10:29:19.463370'
+      creator: 2
+      slug: foo-inc.
+      text: Foo Inc.
+      type: TEST_VENDOR
+      updated: !!timestamp '2011-06-03 10:29:19.463410'
+- model: ordering.selectable
+  pk: 2
+  fields:
+      created: !!timestamp '2011-06-02 10:29:19.463370'
+      creator: 2
+      slug: project-bar
+      text: Project Bar
+      type: TEST_PROJECT
+      updated: !!timestamp '2011-06-04 10:29:19.463410'

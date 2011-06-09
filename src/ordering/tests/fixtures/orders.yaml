@@ -1,0 +1,24 @@
+- model: tests.testorder
+  pk: 1
+  fields:
+    item: 1
+    creator: 2
+    ordered_by: 2
+    quantity: 1
+    notes: Need spare widgets for repairs
+    created: !!timestamp '2011-06-01 11:40:23.123456'
+    updated: !!timestamp '2011-06-01 11:40:23.123456'
+    ordered: !!timestamp '2011-06-01 13:40:23.123456'
+    received: !!timestamp '2011-06-08 9:40:23.123456'
+- model: tests.testorder
+  pk: 2
+  fields:
+    item: 1
+    creator: 2
+    ordered_by: 2
+    quantity: 2
+    notes: Need more widgets for repairs
+    created: !!timestamp '2011-06-03 11:40:23.123456'
+    updated: !!timestamp '2011-06-03 11:40:23.123456'
+    ordered: !!timestamp '2011-06-03 13:40:23.123456'
+    received: NULL

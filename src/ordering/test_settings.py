@@ -35,4 +35,5 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'south',
     'ordering',
+    'ordering.tests',
 )

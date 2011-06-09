@@ -3,11 +3,13 @@ Created on Jun 3, 2011
 
 @author: scheper
 '''
+from decimal import Decimal
+
 from django.contrib.auth.models import User
 from django.test import TestCase
 
 from ordering.models import Selectable
-from ordering.tests.models import TestProject, TestVendor
+from ordering.tests.models import TestItem, TestProject, TestVendor
 
 
 class ModelSmokeTests(TestCase):
@@ -58,3 +60,17 @@ class SelectableTests(TestCase):
         self.assertEqual(2, Selectable.objects.count())
         self.assertEqual(1, TestProject.objects.count())
         self.assertEqual(1, TestVendor.objects.count())
+
+class ItemTests(TestCase):
+    '''Test that we can add a Selectable to an item
+    '''
+    fixtures = [
+        'src/ordering/tests/fixtures/users.yaml',
+        'src/ordering/tests/fixtures/selectables.yaml',
+        'src/ordering/tests/fixtures/items.yaml',
+    ]
+
+    def test_item_unicode(self):
+        '''Test unicode reprsentation'''
+        self.assertEqual('<TestItem: Foo Inc. Widget>',
+                repr(TestItem.objects.get()))

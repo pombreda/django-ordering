@@ -1,0 +1,10 @@
+- model: tests.testitem
+  pk: 1
+  fields:
+      cost: 23.45
+      description: Foo Inc. Widget
+      slug: foo-inc.-widget
+      vendor: 1
+      creator: 1
+      created: !!timestamp '2011-06-01 10:29:19.463370'
+      updated: !!timestamp '2011-06-01 10:29:19.463370'

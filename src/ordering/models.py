@@ -8,6 +8,32 @@ from django.db import models
 from ordering.utils import unique_slugify
 
 
+class BaseItem(models.Model):
+    '''Items that are ordered
+    '''
+    cost = models.DecimalField(max_digits=12, decimal_places=2,
+            help_text='Cost of item')
+    description = models.TextField(help_text='Description of item')
+    slug = models.SlugField(blank=True, unique=True)
+    creator = models.ForeignKey(User, help_text='User who created the model')
+    created = models.DateTimeField(auto_now_add=True,
+            help_text='When model was created')
+    updated = models.DateTimeField(auto_now=True,
+            help_text='When model was last updated')
+
+    class Meta:
+        abstract = True
+
+    def __unicode__(self):
+        return self.description
+
+    def save(self, *args, **kwargs):
+        '''Set slug field if it is None
+        '''
+        if not self.slug:
+            unique_slugify(self, self.description)
+        super(BaseItem, self).save(*args, **kwargs)
+
 class SelectableManager(models.Manager):
     '''Custom Manager for Selectable objects.
     '''

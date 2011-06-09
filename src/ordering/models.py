@@ -34,6 +34,33 @@ class BaseItem(models.Model):
             unique_slugify(self, self.description)
         super(BaseItem, self).save(*args, **kwargs)
 
+class BaseOrder(models.Model):
+    '''Tracks data about individual orders
+    '''
+    creator = models.ForeignKey(User, related_name='orders_created',
+            help_text='User who created this order request')
+    ordered_by = models.ForeignKey(User, related_name='orders_placed',
+            help_text='User who placed the order')
+    quantity = models.PositiveIntegerField(help_text='Quantity of items to '
+            'order')
+    notes = models.TextField(help_text='Additional notes about order')
+    created = models.DateTimeField(auto_now_add=True,
+            help_text='Date order was created')
+    updated = models.DateTimeField(auto_now=True,
+            help_text='Date order was last updated')
+    ordered = models.DateField(blank=True, null=True,
+            help_text='Date order was placed')
+    received = models.DateField(blank=True, null=True,
+            help_text='Date order was received')
+
+    class Meta:
+        abstract = True
+
+    def _calculate_cost(self):
+        return self.item.cost * self.quantity
+
+    cost = property(_calculate_cost)
+
 class SelectableManager(models.Manager):
     '''Custom Manager for Selectable objects.
     '''

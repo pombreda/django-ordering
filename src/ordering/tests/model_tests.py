@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 
 from ordering.models import Selectable
-from ordering.tests.models import TestItem, TestProject, TestVendor
+from ordering.tests.models import TestItem, TestProject, TestOrder, TestVendor
 
 
 class ModelSmokeTests(TestCase):
@@ -74,3 +74,22 @@ class ItemTests(TestCase):
         '''Test unicode reprsentation'''
         self.assertEqual('<TestItem: Foo Inc. Widget>',
                 repr(TestItem.objects.get()))
+
+class OrderTests(TestCase):
+    '''Test BaseOrder'''
+    fixtures = [
+        'src/ordering/tests/fixtures/users.yaml',
+        'src/ordering/tests/fixtures/selectables.yaml',
+        'src/ordering/tests/fixtures/items.yaml',
+        'src/ordering/tests/fixtures/orders.yaml',
+    ]
+
+    def test_unicode(self):
+        '''Smoke test unicode representation'''
+        self.assertEqual(u'<TestOrder: test_user (Foo Inc. Widget)>',
+                repr(TestOrder.objects.latest('created')))
+
+    def test_calculat_cost(self):
+        '''Test that cost property calculates the correct cost'''
+        self.assertEqual(Decimal('23.45'), TestOrder.objects.get(id=1).cost)
+        self.assertEqual(Decimal('46.90'), TestOrder.objects.get(id=2).cost)
